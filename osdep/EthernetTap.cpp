@@ -88,7 +88,7 @@ std::shared_ptr<EthernetTap> EthernetTap::newInstance(
 				return std::shared_ptr<EthernetTap>(new MacEthernetTap(homePath,mac,mtu,metric,nwid,friendlyName,handler,arg));
 			}
 		}
-	}
+	}/
 #endif // __APPLE__
 
 #ifdef __LINUX__
@@ -126,19 +126,19 @@ std::shared_ptr<EthernetTap> EthernetTap::newInstance(
 			_comInit = true;
 		}
 	}
-	return std::shared_ptr<EthernetTap>(new WindowsEthernetTap(homePath,mac,mtu,metric,nwid,friendlyName,handler,arg));
+	return std::shared_ptr<EthernetTap>(new WindowsEthernetTap(homePath,concurrency,mac,mtu,metric,nwid,friendlyName,handler,arg));
 #endif // __WINDOWS__
 
 #ifdef __FreeBSD__
-	return std::shared_ptr<EthernetTap>(new BSDEthernetTap(homePath,mac,mtu,metric,nwid,friendlyName,handler,arg));
+	return std::shared_ptr<EthernetTap>(new BSDEthernetTap(homePath,concurrency,mac,mtu,metric,nwid,friendlyName,handler,arg));
 #endif // __FreeBSD__
 
 #ifdef __NetBSD__
-	return std::shared_ptr<EthernetTap>(new NetBSDEthernetTap(homePath,mac,mtu,metric,nwid,friendlyName,handler,arg));
+	return std::shared_ptr<EthernetTap>(new NetBSDEthernetTap(homePath,concurrency,mac,mtu,metric,nwid,friendlyName,handler,arg));
 #endif // __NetBSD__
 
 #ifdef __OpenBSD__
-	return std::shared_ptr<EthernetTap>(new BSDEthernetTap(homePath,mac,mtu,metric,nwid,friendlyName,handler,arg));
+	return std::shared_ptr<EthernetTap>(new BSDEthernetTap(homePath,concurrency,mac,mtu,metric,nwid,friendlyName,handler,arg));
 #endif // __OpenBSD__
 
 #endif // ZT_SDK?

@@ -283,7 +283,15 @@ public:
 		return _lowBandwidthMode;
 	}
 
-private:
+	inline bool getMultithreadingEnabled()
+	{
+		return _multithreadingEnabled;
+	}
+
+	void initMultithreading(bool isEnabled, unsigned int concurrency, bool cpuPinningEnabled);
+
+
+public:
 	RuntimeEnvironment _RR;
 	RuntimeEnvironment *RR;
 	void *_uPtr; // _uptr (lower case) is reserved in Visual Studio :P
@@ -331,6 +339,7 @@ private:
 	volatile int64_t _prngState[2];
 	bool _online;
 	bool _lowBandwidthMode;
+	bool _multithreadingEnabled;
 };
 
 } // namespace ZeroTier
